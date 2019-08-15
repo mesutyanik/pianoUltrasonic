@@ -35,9 +35,9 @@ try:
 
         print "Distance:",distance,"cm"
 
-        if distance < 13
+        if distance < 13:
             GPIO.output(21, True)
-        else
+        else:
             GPIO.output(21, False)
 
 
