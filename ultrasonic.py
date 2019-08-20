@@ -1,15 +1,16 @@
 import RPi.GPIO as GPIO
 import time
+import os
 GPIO.setmode(GPIO.BCM)
 
-TRIG = 23 
-ECHO = 24
+TRIG = 19 
+ECHO = 26
 
 print "Distance Measurement In Progress"
 
 GPIO.setup(TRIG,GPIO.OUT)
+GPIO.setup(27,GPIO.OUT)
 GPIO.setup(ECHO,GPIO.IN)
-GPIO.setup(21,GPIO.OUT)
 try:
     while True:
 
@@ -34,11 +35,11 @@ try:
         distance = round(distance, 2)
 
         print "Distance:",distance,"cm"
-
-        if distance < 13:
-            GPIO.output(21, True)
+        if distance < 20:
+            GPIO.output(27, True)
+	    os.system('omxplayer do.wav &')
         else:
-            GPIO.output(21, False)
+            GPIO.output(27, False)
 
 
 except KeyboardInterrupt: # If there is a KeyboardInterrupt (when you press ctrl+c), exit the program and cleanup
