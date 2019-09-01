@@ -39,7 +39,7 @@ class SensorStateMachine:
     def finishPulse(self):
         self.printAction("finishing pulse")
         self._currentState = WAITING
-        GPIO.output(self._outPin, True)
+        GPIO.output(self._outPin, False)
     
     def sense(self):
         self.printAction("sensing")
