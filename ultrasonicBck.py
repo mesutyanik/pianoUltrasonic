@@ -53,7 +53,7 @@ try:
         print "Distance:",distance,"cm"
         if distance < 20:
             GPIO.output(27, True)
-	    os.system('omxplayer do.wav &')
+            os.system('omxplayer do.wav &')
         else:
             GPIO.output(27, False)
 
