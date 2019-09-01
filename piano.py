@@ -14,7 +14,7 @@ SENSORS = [
 def makeSound(soundName):
   def emitSound(distance):
     if distance < 20:
-      os.system(f"omxplayer {soundName}.wav &")
+      os.system("omxplayer {}.wav &".format(soundName))
 
   return emitSound
 
@@ -24,17 +24,12 @@ def buildMachines(sensors):
 def setup(sensors):
   GPIO.setmode(GPIO.BCM)
 
-  for outPin, inPin in sensors:
+  for outPin, inPin, sound in sensors:
     GPIO.setup(outPin,GPIO.OUT)
     GPIO.setup(inPin,GPIO.IN)
 
   return buildMachines(sensors)
 
-
-def sensorCleanup(sensorsAndMachines):
-  for outPin, inPin, machine in sensorsAndMachines:
-    GPIO.output(outPin, False)
-    machine.deactivate()
 
 def loop(machines):
 
@@ -45,7 +40,6 @@ def loop(machines):
   except KeyboardInterrupt: # If there is a KeyboardInterrupt (when you press ctrl+c), exit the program and cleanup
     print("Cleaning up!")
     GPIO.cleanup()
-
 
 
 machines = setup(SENSORS)
