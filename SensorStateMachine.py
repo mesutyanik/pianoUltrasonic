@@ -52,8 +52,8 @@ class SensorStateMachine:
             if time.time() - self._timerStart >= 0.00001:
                 self.finishPulse()
         elif self._currentState == WAITING:
-            if GPIO.input(self.inPin) == 1:
+            if GPIO.input(self._inPin) == 1:
                 self.sense()
         elif self._currentState == SENSING:
-            if GPIO.input(self.inPin) == 0:
+            if GPIO.input(self._inPin) == 0:
                 self.measure()
