@@ -20,34 +20,34 @@ class SensorStateMachine:
         print("{}: action -> {}".format(self._name, action))
 
     def deactivate(self):
-        self.printAction("deactivating")
+        #self.printAction("deactivating")
         self._currentState = INACTIVE
         self._pulseStart = None
         self._pulseEnd = None
 
     def settle(self):
-        self.printAction("settling")
+        #self.printAction("settling")
         self._currentState = SETTLING
         GPIO.output(self._outPin, False)
         self._timerStart = time.time()
 
     def sendPulse(self):
-        self.printAction("sending pulse")
+        #self.printAction("sending pulse")
         self._currentState = SENDING_PULSE
         GPIO.output(self._outPin, True)
 
     def finishPulse(self):
-        self.printAction("finishing pulse")
+        #self.printAction("finishing pulse")
         self._currentState = WAITING
         GPIO.output(self._outPin, False)
     
     def sense(self):
-        self.printAction("sensing")
+        #self.printAction("sensing")
         self._currentState = SENSING
         self._timerStart = time.time()
 
     def measure(self):
-        self.printAction("measuring")
+        #self.printAction("measuring")
         pulse_duration = time.time() - self._timerStart
         distance = round(pulse_duration * 17150, 2)
         self._onPulse(distance)
