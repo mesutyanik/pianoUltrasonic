@@ -3,7 +3,7 @@ import numpy as np
 import time
 
 class WaveGenerator:
-    def __init__():
+    def __init__(self):
         self._freq = 0
         self._amplitude = 0
         self._p = pyaudio.PyAudio()
