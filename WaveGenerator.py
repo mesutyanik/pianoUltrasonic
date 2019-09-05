@@ -26,6 +26,8 @@ class WaveGenerator:
         this._amplitude = amplitude
 
     def emit_sound(self, duration):
+        print("CURR AMPLITUDE" + str(self._amplitude))
+        print("CURR FREQ" + str(self._freq))
         samples = (np.sin(2*np.pi*np.arange(self._fs*duration)*self._freq/self._fs)).astype(np.float32)
         self._stream.write(self._amplitude*samples)
 
