@@ -30,5 +30,5 @@ class WaveGenerator:
     def cycle(self):
         current_time = time.time()
         if current_time - self._timer >= 0.25:
-            self.emit_sound(0.25)
             self._timer = time.time()
+            self.emit_sound(0.25)
