@@ -49,6 +49,8 @@ def setup(sensors, wave_generator):
   for outPin, inPin, sound in sensors:
     GPIO.setup(outPin,GPIO.OUT)
     GPIO.setup(inPin,GPIO.IN)
+  
+  wave_generator.open()
 
   return buildMachines(sensors, wave_generator)
 
