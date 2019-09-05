@@ -14,7 +14,7 @@ SENSORS = [
 def makeSound(soundName):
   def emitSound(distance):
     if distance < 20:
-      os.system("omxplayer {}.wav &".format(soundName))
+      os.system("aplay {}.wav &".format(soundName))
 
   return emitSound
 
