@@ -18,10 +18,10 @@ class WaveGenerator:
                 output=True)
 
     def set_freq(self, freq):
-        this._freq = freq
+        self._freq = freq
 
     def set_amplitude(self, amplitude):
-        this._amplitude = amplitude
+        self._amplitude = amplitude
 
     def emit_sound(self, duration):
         samples = (np.sin(2*np.pi*np.arange(self._fs*duration)*self._freq/self._fs)).astype(np.float32)
