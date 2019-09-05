@@ -16,22 +16,20 @@ def change_freq(wave_generator):
   min_freq, max_freq = 200, 600
 
   def change_freq_from_distance(distance):
-    print("DISTANCE " + distance)
     current_freq = max_freq - 10 * distance
     if current_freq < min_freq:
       current_freq = min_freq
-    wave_generator.freq = current_freq
+    wave_generator.set_freq(current_freq)
 
   return change_freq_from_distance
 
 
 def change_amplitude(wave_generator):
   def change_amplitude_from_distance(distance):
-    print("DISTANCE FOR AMP" + distance)
     current_amplitude = 1 - (distance / 20)
     if current_amplitude < 0:
       current_amplitude = 0
-    wave_generator.amplitude = current_amplitude
+    wave_generator.set_amplitude(current_amplitude)
 
   return change_amplitude_from_distance
 
