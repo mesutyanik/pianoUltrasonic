@@ -18,9 +18,11 @@ class WaveGenerator:
                 output=True)
 
     def set_freq(self, freq):
+        print("NEW FREQ " + freq)
         this._freq = freq
 
     def set_amplitude(self, amplitude):
+        print("NEW AMP " + amplitude)
         this._amplitude = amplitude
 
     def emit_sound(self, duration):
