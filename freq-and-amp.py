@@ -13,25 +13,27 @@ SENSORS = [
 ]
 
 def change_freq(wave_generator):
-    min_freq, max_freq = 200, 600
+  min_freq, max_freq = 200, 600
 
-    def change_freq_from_distance(distance):
-        current_freq = max_freq - 10 * distance
-        if current_freq < min_freq:
-            current_freq = min_freq
-        wave_generator.freq = current_freq
+  def change_freq_from_distance(distance):
+    print("DISTANCE " + distance)
+    current_freq = max_freq - 10 * distance
+    if current_freq < min_freq:
+      current_freq = min_freq
+    wave_generator.freq = current_freq
 
-    return change_freq_from_distance
+  return change_freq_from_distance
 
 
 def change_amplitude(wave_generator):
-    def change_amplitude_from_distance(distance):
-        current_amplitude = 1 - (distance / 20)
-        if current_amplitude < 0:
-            current_amplitude = 0
-        wave_generator.amplitude = current_amplitude
+  def change_amplitude_from_distance(distance):
+    print("DISTANCE FOR AMP" + distance)
+    current_amplitude = 1 - (distance / 20)
+    if current_amplitude < 0:
+      current_amplitude = 0
+    wave_generator.amplitude = current_amplitude
 
-    return change_amplitude_from_distance
+  return change_amplitude_from_distance
 
 def buildMachines(sensors, wave_generator):
   machines = []
@@ -57,7 +59,7 @@ def loop(machines, wave_generator):
     while True:
       for machine in machines:
         machine.cycle()
-    wave_generator.cycle()
+      wave_generator.cycle()
   except KeyboardInterrupt: # If there is a KeyboardInterrupt (when you press ctrl+c), exit the program and cleanup
     print("Cleaning up!")
     GPIO.cleanup()
